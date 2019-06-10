@@ -41,15 +41,15 @@ public class UserRestController {
     public void updateUser(@RequestBody User user) {
 
     }
-
-    @GetMapping("/user/addwallet/{name}")
-    public ResponseEntity<User> addWalletToUser(@PathVariable String name) {
-        User user = userRepository.findByName(name);
-        List<Wallet> walletList = new ArrayList<>();
-        Wallet wallet = new Wallet(user);
-        walletList.add(wallet);
-        user.setWallets(walletList);
-        userRepository.save(user);
-        return new ResponseEntity<User>(user, HttpStatus.OK);
-    }
+//
+//    @GetMapping("/user/addwallet/{name}")
+//    public ResponseEntity<User> addWalletToUser(@PathVariable String name) {
+//        User user = userRepository.findByName(name);
+//        List<Wallet> walletList = new ArrayList<>();
+//        Wallet wallet = new Wallet(user);
+//        walletList.add(wallet);
+//        user.setWallets(walletList);
+//        userRepository.save(user);
+//        return new ResponseEntity<User>(user, HttpStatus.OK);
+//    }
 }

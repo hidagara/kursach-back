@@ -26,7 +26,6 @@ public class WalletRestController {
         return new ResponseEntity<List<Wallet>>(wallet, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/wallet/add/{userId}")
 
 
 }
