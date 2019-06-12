@@ -16,17 +16,8 @@ public class WalletRestController {
 
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private WalletRepository walletRepository;
 
-    @GetMapping("/wallet/{userId}")
-    public ResponseEntity<List<Wallet>> getWalletByUserId(@PathVariable String userId) {
-        List<Wallet> wallet = walletRepository.findByUserId(Integer.valueOf(userId));
-//        User user = userRepository.findByName(name);
-        return new ResponseEntity<List<Wallet>>(wallet, HttpStatus.OK);
-    }
 
-    @PutMapping(path = "/wallet/add/{userId}")
 
 
 }

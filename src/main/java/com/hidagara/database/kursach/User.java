@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "USERS")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,18 +12,21 @@ public class User {
     private String name;
     @Column(name = "email_address")
     private String email;
+    private String password;
+    private String country;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Wallet> wallets = new ArrayList<>();
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+//    private List<Wallet> wallets = new ArrayList<>();
 
     public User() {
 
     }
 
-    public User(String name, String email, List<Wallet> wallets) {
+    public User(String name, String email, String password, String country) {
         this.name = name;
         this.email = email;
-        this.wallets = wallets;
+        this.password = password;
+        this.country = country;
     }
 
     public Integer getId() {
@@ -50,11 +53,4 @@ public class User {
         this.email = email;
     }
 
-    public List<Wallet> getWallets() {
-        return wallets;
-    }
-
-    public void setWallets(List<Wallet> wallets) {
-        this.wallets = wallets;
-    }
 }

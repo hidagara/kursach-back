@@ -3,7 +3,6 @@ package com.hidagara.database.kursach;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

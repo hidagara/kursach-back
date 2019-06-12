@@ -29,26 +29,23 @@ public class UserRestController {
 
     @PutMapping(path = "/user/add", consumes = "application/json", produces = "application/json")
     public void addUser(@RequestBody User user) {
+
         userRepository.save(user);
     }
 
-    @DeleteMapping(path = "/user/delete", consumes = "application/json", produces = "application/json")
-    public void deleteUser(@RequestBody User user) {
-        userRepository.delete(user);
+    @DeleteMapping(path = "/user/delete/{id}", consumes = "application/json", produces = "application/json")
+    public void deleteUser(@PathVariable Integer id) {
+        userRepository.deleteById(id);
     }
 
     @PatchMapping(path = "user/update", consumes = "application/json", produces = "application/json")
     public void updateUser(@RequestBody User user) {
-
+        userRepository.save(user);
     }
 
     @GetMapping("/user/addwallet/{name}")
     public ResponseEntity<User> addWalletToUser(@PathVariable String name) {
         User user = userRepository.findByName(name);
-        List<Wallet> walletList = new ArrayList<>();
-        Wallet wallet = new Wallet(user);
-        walletList.add(wallet);
-        user.setWallets(walletList);
         userRepository.save(user);
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
