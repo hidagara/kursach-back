@@ -29,11 +29,11 @@ public class UserRestController {
 
     @PutMapping(path = "/user/add", consumes = "application/json", produces = "application/json")
     public void addUser(@RequestBody User user) {
-
+        userRepository.saveAndFlush(user);
         userRepository.save(user);
     }
 
-    @DeleteMapping(path = "/user/delete/{id}", consumes = "application/json", produces = "application/json")
+    @DeleteMapping(path = "/user/delete/{id}")
     public void deleteUser(@PathVariable Integer id) {
         userRepository.deleteById(id);
     }
